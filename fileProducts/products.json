@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Iphone 14",
+    "description": "Apple Iphone 14",
+    "price": 1099,
+    "thumbnail": "iphone14.jpg",
+    "code": "code1",
+    "stock": 657
+  },
+  {
+    "id": 3,
+    "title": "Iphone 13",
+    "description": "Apple Iphone 13",
+    "price": 899,
+    "thumbnail": "iphone13.jpg",
+    "code": "code3",
+    "stock": 472
+  },
+  {
+    "id": 4,
+    "title": "Iphone 11",
+    "description": "Apple Iphone 11",
+    "price": 699,
+    "thumbnail": "iphone11.jpg",
+    "code": "code4",
+    "stock": 785
+  },
+  {
+    "id": 5,
+    "title": "Iphone X",
+    "description": "Apple Iphone X",
+    "price": 599,
+    "thumbnail": "iphoneX.jpg",
+    "code": "code5",
+    "stock": 574
+  },
+  {
+    "id": 6,
+    "title": "Iphone 7",
+    "description": "Apple Iphone 7",
+    "price": 399,
+    "thumbnail": "iphone7.jpg",
+    "code": "code6",
+    "stock": 8151
+  }
+]
