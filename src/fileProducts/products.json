@@ -1,14 +1,5 @@
 [
   {
-    "id": 1,
-    "title": "Iphone 14",
-    "description": "Apple Iphone 14",
-    "price": 1099,
-    "thumbnail": "iphone14.jpg",
-    "code": "code1",
-    "stock": 657
-  },
-  {
     "id": 3,
     "title": "Iphone 13",
     "description": "Apple Iphone 13",
@@ -43,5 +34,16 @@
     "thumbnail": "iphone7.jpg",
     "code": "code6",
     "stock": 8151
+  },
+  {
+    "id": 7,
+    "title": "Iphone 5",
+    "description": "Apple Iphone 5",
+    "price": 199,
+    "category": "phone",
+    "status": true,
+    "thumbnail": "iphone5.jpg",
+    "code": "code7",
+    "stock": 23
   }
 ]
