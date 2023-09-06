@@ -1,4 +1,4 @@
- import { Router } from "express"
+import { Router } from "express"
 import ProductManager from "../managers/productManager.js"
 import { __dirname } from "../utils.js"
 
@@ -36,10 +36,9 @@ router.put("/products/:pid", async (req, res) => {
 
 
 router.delete("/products/:pid", async (req, res) => {
-
-    const deleteproduct = await manager.deleteProduct(req.params);
+    const id = parseInt(req.params.pid)
+    const deleteproduct = await manager.deleteProduct(id);
     res.json({ status: "success", deleteproduct });
-
 });
 
 

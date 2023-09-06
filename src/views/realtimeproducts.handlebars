@@ -1,0 +1,61 @@
+{{!-- <form id="formProduct">
+    <input class="controls" type="text" name="title" id="title" placeholder="Ingrese Nombre del Producto" required>
+    <input class="controls" type="text" name="description" id="description" placeholder="Ingrese description" required>
+    <input class="controls" type="number" name="stock" id="stock" placeholder="Ingrese su stock" required>
+    <input class="controls" type="text" name="thumbnail" id="thumbnail" placeholder="Ingrese su imagen url" required>
+    <input class="controls" type="text" name="category" id="category" placeholder="Ingrese categoria" required>
+    <input class="controls" type="number" name="price" id="price" placeholder="Ingrese su precio" required>
+    <input class="controls" type="text" name="code" id="code" placeholder="Ingrese su code" required>
+    <button class="botons" type="submit" id="add-btn">Registrar </button>
+    <h2> Para eliminar un producto:</h2>
+    <input class="controls" type="number" name="id-prod" id="id-prod" placeholder="Ingrese ID">
+    <button class="botons" type="button" id="delete-btn">Eliminar</button>
+
+</form> --}}
+
+<form id="formProduct">
+    <h2>Real Time Products</h2>
+    <div class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="title" id="title" placeholder="Ingrese Nombre del Producto" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="description" id="description" placeholder="Ingrese description" required>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control" name="stock" id="stock" placeholder="Ingrese su stock" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="thumbnail" id="thumbnail" placeholder="Ingrese su imagen url" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="category" id="category" placeholder="Ingrese categoria" required>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control" name="price" id="price" placeholder="Ingrese su precio" required>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="code" id="code" placeholder="Ingrese su code" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="add-btn">Registrar</button>
+    </div>
+</form>
+
+<form id="formProduct">
+    <h2> Para eliminar un producto</h2>
+    <div class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="mb-3">
+            <input type="number" class="form-control" name="id-prod" id="id-prod" placeholder="Ingrese ID">
+        </div>
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" id="delete-btn">Eliminar</button>
+        </div>
+    </div>
+</form>
+
+<div class="card-group" id="list-products">
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtime.js"></script>

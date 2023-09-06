@@ -4,7 +4,9 @@
     "title": "Iphone 13",
     "description": "Apple Iphone 13",
     "price": 899,
-    "thumbnail": "iphone13.jpg",
+    "category": "phone",
+    "status": true,
+    "thumbnail": "https://www.tradeinn.com/f/13835/138359442/apple-iphone-13-pro-max-512gb-6.7.jpg",
     "code": "code3",
     "stock": 472
   },
@@ -13,7 +15,9 @@
     "title": "Iphone 11",
     "description": "Apple Iphone 11",
     "price": 699,
-    "thumbnail": "iphone11.jpg",
+    "category": "phone",
+    "status": true,
+    "thumbnail": "https://grupotecargentina.com/wp-content/uploads/2021/02/11.jpg",
     "code": "code4",
     "stock": 785
   },
@@ -22,28 +26,21 @@
     "title": "Iphone X",
     "description": "Apple Iphone X",
     "price": 599,
-    "thumbnail": "iphoneX.jpg",
+    "category": "phone",
+    "status": true,
+    "thumbnail": "data:image/jpeg;base64,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",
     "code": "code5",
     "stock": 574
   },
   {
     "id": 6,
-    "title": "Iphone 7",
-    "description": "Apple Iphone 7",
-    "price": 399,
-    "thumbnail": "iphone7.jpg",
-    "code": "code6",
-    "stock": 8151
-  },
-  {
-    "id": 7,
-    "title": "Iphone 5",
-    "description": "Apple Iphone 5",
-    "price": 199,
+    "title": "Iphone 12",
+    "description": "Apple Iphone 12",
+    "price": "799",
     "category": "phone",
     "status": true,
-    "thumbnail": "iphone5.jpg",
-    "code": "code7",
-    "stock": 23
+    "thumbnail": "https://www.macstation.com.ar/img/productos/2492-2317-1.jpg",
+    "code": "1321",
+    "stock": "432"
   }
 ]

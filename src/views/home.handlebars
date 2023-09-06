@@ -1,0 +1,12 @@
+<div class="card-group">
+    {{#each listProducts}}
+    <div class="card" style="width: 18rem;">
+        <img src="{{thumbnail}}" class="card-img-top" alt="..." height="400px">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+            <a href="#" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
