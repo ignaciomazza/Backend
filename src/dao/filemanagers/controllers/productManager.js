@@ -213,21 +213,6 @@ export default class ProductManager {
 
     };
 
-    // deleteProduct = async (id) => {
-
-    //     const { pid } = id
-    //     const allproducts = await this.getProducts({});
-    //     const productswithoutfound = allproducts.filter(
-    //         (elemento) => elemento.id !== parseInt(pid)
-    //     );
-
-    //     await fs.promises.writeFile(
-    //         this.path,
-    //         JSON.stringify(productswithoutfound, null, 2)
-    //     );
-
-    // };
-
     deleteProduct = async (id) => {
         const allproducts = await this.getProducts({});
         const productswithoutfound = allproducts.filter((el) => el.id !== parseInt(id));
