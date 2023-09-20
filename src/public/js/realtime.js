@@ -1,6 +1,6 @@
-const socketCliente = io();
+const socketClient = io();
 
-socketClient.on("products", (products) => {
+socketClient.on("enviodeproducts", (products) => {
     updateProductList(products);
 });
 
