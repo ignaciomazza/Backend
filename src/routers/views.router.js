@@ -12,8 +12,8 @@ routerV.get("/", async (req, res) => {
 })
 
 routerV.get("/realtimeproducts", privateRoutes,(req, res) => {
-  const { first_name, last_name, email, age } = req.session;
-  res.render('realtimeproducts', { first_name, last_name, email, age });
+  const { first_name, last_name, email, age, rol } = req.session;
+  res.render('realtimeproducts', { first_name, last_name, email, age, rol });
 })
 
 routerV.get("/chat", (req, res) => {

@@ -1,4 +1,4 @@
-{{!-- <div class="mask d-flex align-items-center h-100 gradient-custom-3 m-5">
+<div class="mask d-flex align-items-center h-100 gradient-custom-3 m-5">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-9 col-lg-7 col-xl-6">
@@ -6,40 +6,37 @@
                     <div class="card-body p-5">
                         <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                        <form action="http://localhost:8080/signup" method="post">
+                        <form action="http://localhost:8080/api/user/signup" method="post">
 
                             <div class="form-outline mb-4">
 
-                                <input type="text" class="form-control" name="first_name" value="first_name"
-                                    id="first_name" placeholder="Nombre" required>
+                                <input type="text" class="form-control" name="first_name" placeholder="Nombre" required>
 
                             </div>
 
                             <div class="form-outline mb-4">
 
-                                <input type="text" class="form-control" name="last_name" value="last_name"
-                                    id="last_name" placeholder="Apellido" required>
+                                <input type="text" class="form-control" name="last_name" placeholder="Apellido"
+                                    required>
 
                             </div>
 
                             <div class="form-outline mb-4">
 
-                                <input type="text" class="form-control" name="email" value="email" id="email"
-                                    placeholder="Email" required>
+                                <input type="text" class="form-control" name="email" placeholder="Email" required>
 
                             </div>
 
                             <div class="form-outline mb-4">
 
-                                <input type="number" class="form-control" name="age" value="password" id="age"
-                                    placeholder="Edad" required>
+                                <input type="number" class="form-control" name="age" placeholder="Edad" required>
 
                             </div>
 
                             <div class="form-outline mb-4">
 
-                                <input type="text" class="form-control" name="password" value="password" id="password"
-                                    placeholder="Contraseña" required>
+                                <input type="text" class="form-control" name="password" placeholder="Contraseña"
+                                    required>
 
                             </div>
 
@@ -61,13 +58,5 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-
-    <form action="http://localhost:8080/api/user/signup" method="post">
-        <input type="text" name="first_name" value="first_name" />
-        <input type="text" name="last_name" value="last_name" />
-        <input type="text" name="email" value="email" />
-        <input type="number" name="age" value="age" />
-        <input type="text" name="password" value="password" />
-        <button value="submit">Registrarse</button>
-    </form>
+    </div>
+</div>
