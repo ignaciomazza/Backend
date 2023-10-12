@@ -1,63 +1,46 @@
 import { Router } from 'express';
 import { userModel } from '../dao/models/user.model.js';
+import passport from 'passport';
 
 const routerU = Router();
 
-function userRol (email, password) {
-    if (email == 'adminCoder@coder.com' && password == 'adminCod3r123') {
-      return 'admin';
-    }else{
-      return 'user';
-    }
-}
-
-routerU.post('/signup', async (req, res) => {
-  const { first_name, last_name, email, age, password } = req.body;
-  const userExists = await userModel.findOne({ email });
-
-  const rol = await userRol(email, password)
-
-  if (userExists) {
-    return res.send('Ya estás registrado');
+routerU.post(
+  '/signup',
+  passport.authenticate('register', { failureRedirect: '/failregister' }),
+  async (req, res) => {
+    console.log(req.user);
+    res.redirect('/realtimeproducts');
   }
+);
 
-  const user = await userModel.create({
-    first_name,
-    last_name,
-    email,
-    age,
-    password,
-    rol,
-  });
+routerU.post(
+  '/login',
+  passport.authenticate('login', { failureRedirect: '/faillogin' }),
+  async (req, res) => {
+    req.session.first_name = req.user.first_name;
+    req.session.last_name = req.user.last_name;
+    req.session.email = req.user.email;
+    req.session.age = req.user.age;
+    req.session.rol = req.user.rol;
+    req.session.isLogged = true;
 
-  req.session.first_name = first_name;
-  req.session.last_name = last_name;
-  req.session.email = email;
-  req.session.age = age;
-  req.session.rol = rol;
-  req.session.isLogged = true;
-
-  res.redirect('/realtimeproducts');
-});
-
-routerU.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  const user = await userModel.findOne({ email, password }).lean();
-
-  if (!user) {
-    return res.send('Tus credenciales no son correctas');
+    res.redirect('/realtimeproducts');
   }
+);
 
-  req.session.first_name = user.first_name;
-  req.session.last_name = user.last_name;
-  req.session.email = user.email;
-  req.session.age = user.age;
-  req.session.rol = user.rol;
-  req.session.isLogged = true;
+routerU.get(
+  '/github',
+  passport.authenticate('github', { scope: ['user:email'] })
+);
 
-  console.log(req.session)
-
-  res.redirect('/realtimeproducts');
-});
+routerU.get(
+  '/githubcallback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function (req, res) {
+    req.session.user = req.user;
+    req.session.isLogged = true;
+    res.redirect('/realtimeproducts');
+  }
+);
 
 export default routerU;

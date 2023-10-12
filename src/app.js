@@ -14,6 +14,8 @@ import socketChat from './listeners/socketChat.js';
 
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
+import initializePassport from './config/passport.config.js';
+import passport from 'passport';
 
 const app = express();
 const PORT = process.env.PORT || 8080
@@ -44,6 +46,10 @@ app.use('/api/carts', routerC)
 app.use('/api/user', routerU);
 app.use('/', routerV);
 
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+
 connectToDB()
 
 const httpServer = app.listen(PORT, () => {
@@ -60,6 +66,3 @@ const socketServer = new Server(httpServer)
 
 socketProducts(socketServer)
 socketChat(socketServer)
-//  socketServer.on('connection',socket=>{
-//     socketChat(socketServer,socket);
-//  })
