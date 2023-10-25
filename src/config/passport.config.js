@@ -3,13 +3,17 @@ import LocalStrategy from "passport-local"
 import GitHubStrategy from 'passport-github2';
 import bcrypt from "bcrypt"
 import { userModel } from "../dao/models/user.model.js";
+import jwt from 'passport-jwt'
 
-function userRol(email, password) {
-    if (email == 'adminCoder@coder.com' && password == 'adminCod3r123') {
-        return 'admin';
-    } else {
-        return 'user';
+const JWTStrategy = jwt.Strategy;
+const ExtractJWT = jwt.ExtractJwt;
+
+const cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies) {
+        token = req.cookies['token'];
     }
+    return token;
 }
 
 const initializePassport = () => {
@@ -19,7 +23,6 @@ const initializePassport = () => {
             { passReqToCallback: true, usernameField: 'email' },
             async (req, username, password, done) => {
                 const { first_name, last_name, age } = req.body;
-                const rol = await userRol(username, password);
                 try {
                     const exists = await userModel.findOne({ email: username });
                     if (exists) {
@@ -31,8 +34,7 @@ const initializePassport = () => {
                         last_name,
                         age,
                         email: username,
-                        password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
-                        rol,
+                        password: bcrypt.hashSync(password, bcrypt.genSaltSync(10))
                     });
                     return done(null, user);
                 } catch (error) {
@@ -98,6 +100,17 @@ const initializePassport = () => {
         )
     );
 
+    passport.use('jwt', new JWTStrategy({
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+        secretOrKey: 'secreto',
+    }, async (jwt_payload, done) => {
+        try {
+            return done(null, jwt_payload);
+        } catch (error) {
+            return done(error);
+        }
+    })
+    );
 
     passport.serializeUser((user, done) => {
         done(null, user._id);

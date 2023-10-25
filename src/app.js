@@ -16,10 +16,12 @@ import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import initializePassport from './config/passport.config.js';
 import passport from 'passport';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const PORT = process.env.PORT || 8080
 
+app.use(cookieParser());
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
