@@ -1,4 +1,4 @@
-import ProductManager from "../dao/managers/productManagerMongo.js";
+import ProductManager from "../dao/classes/productManager.dao.js";
 const pm = new ProductManager()
 
 const socketProducts = (socketServer) => {

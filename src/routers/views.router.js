@@ -1,36 +1,21 @@
 import { Router } from 'express';
-import ProductManager from "../dao/managers/productManagerMongo.js"
 import publicRoutes from '../middlewares/publicRoutes.js';
 import privateRoutes from '../middlewares/privateRoutes.js';
-const pm = new ProductManager()
+
+import { home, realtimeproducts, chat, login, signup, logout } from '../controllers/views.controller.js'
 
 const routerV = Router()
 
-routerV.get("/", async (req, res) => {
-    const listadeproductos = await pm.getProductsView()
-    res.render("home", { listadeproductos })
-})
+routerV.get("/", home)
 
-routerV.get("/realtimeproducts", privateRoutes,(req, res) => {
-  const { first_name, last_name, email, age, rol } = req.session;
-  res.render('realtimeproducts', { first_name, last_name, email, age, rol });
-})
+routerV.get("/realtimeproducts", privateRoutes, realtimeproducts)
 
-routerV.get("/chat", (req, res) => {
-    res.render("chat")
-})
+routerV.get("/chat", chat)
 
-routerV.get('/login', publicRoutes,(req, res) => {
-    res.render('login');
-});
+routerV.get('/login', publicRoutes, login);
 
-routerV.get('/signup', publicRoutes,(req, res) => {
-    res.render('signup');
-});
+routerV.get('/signup', publicRoutes, signup);
 
-routerV.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/login');
-});
+routerV.get('/logout', logout);
 
 export default routerV

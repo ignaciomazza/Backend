@@ -3,6 +3,9 @@ import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
 import connectToDB from "./config/configServer.js"
 import { __dirname } from "./utils.js"
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 import routerP from './routers/products.router.js';
 import routerC from './routers/carts.router.js';
@@ -34,8 +37,7 @@ app.set("views", __dirname + "/views")
 app.use(
     session({
         store: MongoStore.create({
-            mongoUrl:
-                'mongodb+srv://juanignaciomazza470:i99kg3OtkqdpNEuy@cluster0.mqbg9qp.mongodb.net/ecommerce?retryWrites=true&w=majority',
+            mongoUrl: process.env.URL_MONGO,
             ttl: 15,
         }),
         secret: '$sic290weDS;aksd',

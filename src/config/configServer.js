@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-const URI = 'mongodb+srv://juanignaciomazza470:i99kg3OtkqdpNEuy@cluster0.mqbg9qp.mongodb.net/ecommerce?retryWrites=true&w=majority'
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 const connectToDB = () => {
     try {
-        mongoose.connect(URI)
+        mongoose.connect(process.env.URL_MONGO)
         console.log('connected to DB ecommerce')
     } catch (error) {
         console.log(error);
