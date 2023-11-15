@@ -78,7 +78,6 @@ export const putProduct = async (req, res) => {
     const { pid } = req.params
     const obj = req.body
     const updatedproduct = await pm.updateProduct(pid, obj);
-    console.log(updatedproduct)
     res.json({ status: "success", updatedproduct });
 }
 

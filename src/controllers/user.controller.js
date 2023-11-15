@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const signUp = async (req, res) => {
-    console.log(req.user);
     res.redirect('/login');
 }
 
@@ -16,15 +15,26 @@ export const login = async (req, res) => {
     if (!bcrypt.compareSync(password, user.password)) {
         return res.status(401).send('Contraseña equivocada')
     }
+
     const userId = user._id;
     const token = jwt.sign({ userId }, 'secreto', { expiresIn: '24h' })
     res.cookie('token', token, {
         maxAge: 1000000,
         httpOnly: true,
     })
-        .send('Estas logeado');
+        .redirect("/api/user/current")
 }
 
 export const current = async (req, res) => {
-    res.send(req.user);
+    const userDTO = {
+        User: `${req.user.first_name} ${req.user.last_name}`,
+        Email: req.user.email,
+        Age: req.user.age,
+        Rol: req.user.role
+    }
+
+    req.session.Profile = userDTO
+    req.session.isLogged = true
+
+    res.redirect('/realtimeproducts')
 }

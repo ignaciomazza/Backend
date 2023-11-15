@@ -152,3 +152,14 @@ export const deleteCartById = async (req, res) => {
         return res.status(500).send({ status: 'error', message: 'An error occurred while processing the request' });
     }
 }
+
+export const postPurchase = async (req, res) => {
+    try {
+        const { cid } = req.params;
+        const purchaser = req.session.Email;
+        const newTicket = await cm.purchaseCart(cid, purchaser);
+        res.status(200).send({ status: "success", ticket: newTicket });
+    } catch (error) {
+
+    }
+}

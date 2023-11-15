@@ -1,31 +1,20 @@
-import { productsModel } from "../models/products.model.js"
+import { ProductRepository } from "../../repository/productRepository.js"
+
+const productRepository = new ProductRepository()
 
 export default class ProductManager {
     categories = async () => {
         try {
-            const categories = await productsModel.aggregate([
-                {
-                    $group: {
-                        _id: null,
-                        categories: { $addToSet: "$category" }
-                    }
-                }
-            ])
-
-            return categories[0].categories
-
+            return await productRepository.categories()
         }
         catch (err) {
-            console.log(err);
             return err
         }
-
     }
 
     getProductsView = async () => {
         try {
-            return await productsModel.find().lean();
-
+            return await productRepository.getView()
         } catch (err) {
             return err
         }
@@ -33,52 +22,43 @@ export default class ProductManager {
 
     getProducts = async (filter, options) => {
         try {
-            return await productsModel.paginate(filter, options);
+            return await productRepository.get(filter, options)
         } catch (err) {
             return err
         }
     }
 
-
     getProductById = async (id) => {
         try {
-            return await productsModel.findById(id)
-
+            return await productRepository.getById(id)
         } catch (err) {
             return { error: err.message }
         }
 
     }
 
-
     addProduct = async (product) => {
         try {
-            await productsModel.create(product);
-            return await productsModel.findOne({ title: product.title })
+            return await productRepository.add(product)
         }
         catch (err) {
             return err
         }
-
     }
-
 
     updateProduct = async (id, product) => {
         try {
-            return await productsModel.findByIdAndUpdate(id, { $set: product })
+            return await productRepository.update(id, product)
         } catch (err) {
             return err
         }
-
     }
-
 
     deleteProduct = async (id) => {
         try {
-            return await productsModel.findByIdAndDelete(id);
+            return await productRepository.delete(id);
         } catch (err) {
             return err
         }
-
     }
 }

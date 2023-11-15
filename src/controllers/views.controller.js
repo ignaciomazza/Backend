@@ -7,8 +7,8 @@ export const home = async (req, res) => {
 }
 
 export const realtimeproducts = (req, res) => {
-    const { first_name, last_name, email, age, rol } = req.session;
-    res.render('realtimeproducts', { first_name, last_name, email, age, rol });
+    const { Profile } = req.session;
+    res.render('realtimeproducts', { Profile });
 }
 
 export const chat = (req, res) => {
